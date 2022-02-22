@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import mysql.connector 
 app=Flask(__name__)
 db=mysql.connector.connect(host="localhost", user="root", password="root", database="project")
@@ -26,5 +26,20 @@ def details(EmployeeNo):
     mycursor.execute("Select * from accounts where EmployeeNo='"+EmployeeNo+"'")
     salaryrecords=mycursor.fetchall()
     return render_template("details.html", personal=personalrecord,accounts=salaryrecords)
+
+@app.route("/newrecord")
+def newrecord():
+    return render_template("inputform.html")
+
+@app.route("/saverecord", methods=["post"])
+def saverecord():
+    name=request.form["na"]
+    dept=request.form["dept"]
+    sql1="insert into personal(name, department) values('{0}', '{1}')".format(name,dept)
+    mycursor.execute(sql1)
+    db.commit()
+    return redirect("/")
+
+
 
 app.run(debug=True)
