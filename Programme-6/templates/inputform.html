@@ -1,0 +1,28 @@
+<html>
+    <script>
+        function checkData(){
+            if(A.value==""){
+                alert("You need to enter the first number")
+                A.focus()
+                return false
+            }else{
+                if(B.value==""){
+                    alert("You need to enter the second number")
+                    B.focus()
+                    return false
+                }
+            }
+            
+            
+        }
+    </script>
+<form action="http://localhost:5000/data" method="POST" onsubmit="return checkData()">
+    What number's times table do you want? <input id="A" type="text" name="num1"><br>
+    How many times do you want to see it multiplied? <input id="B" type="text" name="num2"><br>
+
+    <input type="Submit" value="Ok">
+
+</form>
+
+
+</html>

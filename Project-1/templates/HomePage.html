@@ -1,0 +1,23 @@
+<html>
+<h2>
+<center>
+Employee Information System
+</center>
+</h2>
+<table>
+    <tr>
+        <td> S.no</td>
+        <td> Name </td>
+    </tr>
+
+{% for record in data %} 
+<tr>
+    <td> 1 </td>
+    <td> <a href='http://localhost:5000/details/{{record[0]}}'>{{record[1]}} </a> 
+
+    </td>
+</tr>
+ <br>
+{% endfor%} 
+</table>
+</html>
