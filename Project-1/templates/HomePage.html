@@ -1,10 +1,20 @@
 <html>
 <h2>
-<center>
+<centre>
 Employee Information System
-</center>
+</centre>
 </h2>
-<a href="http://localhost:5000/newrecord"> New Employee</a>
+<a href='http://localhost:5000/newrecord'> New Employee </a> <br>
+<h2> Select Department <font color='pink'> </font></h2>
+
+<form action = "http://localhost:5000/showdepartmentEmployees" method="post">
+    <select name="dept">
+        <option value="HR"> Human Resources </option>
+        <option value="IT"> Information Technology</option>
+    </select>
+    <input type="submit">
+</form>
+<a href="http://localhost:5000/showdepartment"> Show Department Record</a> <br> <br>
 <table>
     <tr>
         <td> S.no</td>

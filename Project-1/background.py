@@ -40,6 +40,30 @@ def saverecord():
     db.commit()
     return redirect("/")
 
+@app.route("/showdepartment")
+def showdepartment():
+    return render_template("showdepartment.html")
 
+@app.route("/showdepartmentEmployees", methods=["POST"])
+def showdepartmentEmployees():
+    dept=request.form["dept"]
+    mycursor.execute("Select * from personal where department ='"+dept+"'")
+    records=mycursor.fetchall();
+    return render_template("HomePage.html", data=records)
+
+    return dept
+
+@app.route("/newpayslip")
+def newpayslip():
+    return render_template("newpayslip.html")
+
+@app.route("/savepayslip", methods=["post"])
+def savepayslip():
+    Amount=request.form["Amount"]
+    EmployeeNo=request.form["EmployeeNo"]
+    sql1="insert into accounts(EmployeeNo, SalaryDate, Amount) values('{0}', now(), '{1}')".format(EmployeeNo, Amount)
+    mycursor.execute(sql1)
+    db.commit()
+    return redirect("/")
 
 app.run(debug=True)
